@@ -28,3 +28,5 @@ services:
         value: "false"           # Disable metrics for now
       - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
         value: "true"            # Fix permissions automatically
+      - key: WEBHOOK_URL
+        value: "https://n8n-leo-g0.onrender.com"
