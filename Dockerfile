@@ -25,5 +25,5 @@ ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
 # Expose port 5678 (this is where n8n runs)
 EXPOSE 5678
 
-# Use the full path to n8n and start it
-CMD ["/usr/local/bin/node", "/usr/local/lib/node_modules/n8n/bin/n8n", "start"]
+# Use the default entrypoint and command from the original n8n image
+CMD ["n8n"]
