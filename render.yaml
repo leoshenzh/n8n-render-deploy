@@ -1,0 +1,28 @@
+# This file tells Render how to deploy your n8n service
+services:
+  - type: web                    # Type of service (web service)
+    name: n8n-automation         # Name of your service (you can change this)
+    env: docker                  # Use Docker environment
+    dockerfilePath: ./Dockerfile # Path to your Dockerfile
+    plan: free                   # Use free plan (you can upgrade later)
+    
+    # Environment variables for n8n
+    envVars:
+      - key: N8N_HOST
+        value: "0.0.0.0"         # Listen on all network interfaces
+      - key: N8N_PORT
+        value: "5678"            # Port n8n runs on
+      - key: N8N_PROTOCOL
+        value: "https"           # Use HTTPS (Render provides SSL)
+      - key: N8N_LOG_LEVEL
+        value: "info"            # Logging level
+      - key: N8N_BASIC_AUTH_ACTIVE
+        value: "true"            # Enable basic authentication
+      - key: N8N_BASIC_AUTH_USER
+        value: "admin"           # Username (CHANGE THIS!)
+      - key: N8N_BASIC_AUTH_PASSWORD
+        value: "Leo221202"     # Password (CHANGE THIS!)
+      - key: GENERIC_TIMEZONE
+        value: "UTC"             # Timezone
+      - key: N8N_METRICS
+        value: "false"           # Disable metrics for now
