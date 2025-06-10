@@ -1,29 +1,10 @@
-# Use the official n8n image as base
+# Minimal approach - let n8n handle everything
 FROM n8nio/n8n:latest
 
-# Switch to root user to fix permissions
-USER root
-
-# Set the working directory inside the container
-WORKDIR /home/node
-
-# Create directories for n8n data with proper permissions
-RUN mkdir -p /home/node/.n8n && \
-    chown -R node:node /home/node/.n8n && \
-    chmod -R 755 /home/node/.n8n
-
-# Switch back to node user for security
-USER node
-
-# Set environment variables for n8n
+# Just set the environment variables
 ENV N8N_HOST=0.0.0.0
 ENV N8N_PORT=5678
 ENV N8N_PROTOCOL=https
-ENV N8N_LOG_LEVEL=info
-ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false
 
-# Expose port 5678 (this is where n8n runs)
-EXPOSE 5678
-
-# Use the default entrypoint and command from the original n8n image
-CMD ["n8n"]
+# Use the default everything from the base image
